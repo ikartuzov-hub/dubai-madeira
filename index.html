@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="night">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dubai Madeira</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg?v=1">
+<link rel="apple-touch-icon" href="icon.svg?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C1A24; --bg2:#112733; --bg3:#16323F;
+  --ink:#EAF3F8; --mut:#9DBCCB; --faint:#5E7E8D;
+  --accent:#2A8FC0; --accent2:#58B6DE; --accentInk:#04141C;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.16);
+  --serif:'Spectral',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+}
+[data-theme="day"]{
+  --bg:#EDF4F8; --bg2:#FFFFFF; --bg3:#F2F8FB;
+  --ink:#0C1A24; --mut:#4D6B7A; --faint:#7C98A6;
+  --accent:#1B6F95; --accent2:#2A8FC0; --accentInk:#FFFFFF;
+  --line:rgba(8,30,40,.12); --line2:rgba(8,30,40,.20);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+
+.brandmark{position:fixed;top:13px;left:16px;width:26px;height:26px;z-index:40}
+.topctrl{position:fixed;top:13px;right:14px;z-index:40;display:flex;gap:8px;align-items:center}
+.tbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:13px;
+  font-weight:500;transition:.2s;padding:0}
+.tbtn.icon{font-size:15px;font-weight:400}
+.tbtn:hover{background:var(--bg3)}
+.tbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.langwrap{position:relative}
+.langmenu{position:absolute;top:44px;right:0;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:12px;padding:5px;min-width:142px;display:none;flex-direction:column;gap:2px}
+.langmenu.open{display:flex}
+.langmenu button{background:transparent;border:none;color:var(--mut);text-align:left;padding:8px 11px;
+  border-radius:8px;cursor:pointer;font-family:var(--sans);font-size:13.5px;display:flex;align-items:center;gap:9px}
+.langmenu button:hover{background:var(--bg3);color:var(--ink)}
+.langmenu button.on{color:var(--accent2)}
+.langmenu .lc{display:inline-block;width:22px;font-weight:600;font-size:12px;color:var(--faint)}
+.langmenu button.on .lc{color:var(--accent2)}
+
+#reveal{position:fixed;inset:0;z-index:90;background:var(--bg);display:flex;align-items:center;justify-content:center;pointer-events:none}
+#reveal svg{width:120px;height:120px;animation:markIn 2.5s cubic-bezier(.65,0,.25,1) forwards}
+#reveal.gone{opacity:0;transition:opacity .5s ease}
+@keyframes markIn{
+  0%{transform:translate(0,12vh) scale(2.4);opacity:0}
+  18%{opacity:1}
+  60%{transform:translate(0,0) scale(2.4);opacity:1}
+  100%{transform:translate(calc(-50vw + 29px),calc(-50vh + 26px)) scale(.25);opacity:0}
+}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:100px 0 70px}
+.eyebrow{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:26px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,13vw,86px);line-height:.98;letter-spacing:-.015em;margin-bottom:26px}
+.subA{font-size:clamp(17px,4.4vw,21px);color:var(--ink);line-height:1.45;max-width:560px;margin-bottom:18px;font-weight:400}
+.subB{font-size:15px;color:var(--mut);line-height:1.6;max-width:540px;margin-bottom:26px}
+.proof{font-size:13.5px;color:var(--faint);border-top:1px solid var(--line);padding-top:16px;max-width:540px;margin-bottom:34px}
+.btnrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accentInk);
+  font-family:var(--sans);font-weight:600;font-size:16px;padding:15px 30px;border:none;border-radius:13px;
+  cursor:pointer;text-decoration:none;transition:.2s}
+.cta:hover{background:var(--accent2);transform:translateY(-1px)}
+.cta:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+.linkmore{color:var(--mut);font-size:15px;text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:2px}
+.linkmore:hover{color:var(--ink)}
+
+.wave-div{display:block;width:100%;height:42px;color:var(--accent);opacity:.45;margin:10px 0}
+
+.calc{padding:14px 0 40px}
+.sec-eye{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:500;margin-bottom:10px}
+.calc h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,6.5vw,40px);letter-spacing:-.01em;margin-bottom:8px}
+.calc .sub{color:var(--mut);font-size:15px;margin-bottom:30px;max-width:520px}
+
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:24px 22px;margin-bottom:18px}
+.field-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.field-top label{font-size:14px;color:var(--mut);font-weight:500}
+.entry-val{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.entry-val span.u{font-size:18px;color:var(--mut)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:var(--bg3);outline:none;margin:14px 0 6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);cursor:pointer;box-shadow:0 0 0 1px var(--accent)}
+input[type=range]::-moz-range-thumb{width:21px;height:21px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);cursor:pointer}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--accent2)}
+.range-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--faint)}
+.share{margin-top:16px;font-size:13.5px;color:var(--mut)}
+.share b{color:var(--accent2);font-weight:600}
+
+.seg{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:92px;background:transparent;border:1px solid var(--line2);color:var(--mut);font-family:var(--sans);font-size:13.5px;font-weight:500;padding:11px 8px;border-radius:11px;cursor:pointer;transition:.15s}
+.seg button:hover{border-color:var(--accent)}
+.seg button.on{background:var(--accent);color:var(--accentInk);border-color:var(--accent)}
+.seg button:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+.seg-label{font-size:14px;color:var(--mut);font-weight:500;margin-bottom:4px;display:block}
+
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 4px}
+.rcard{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:20px 18px}
+.rcard .rlab{font-size:13px;color:var(--mut);margin-bottom:8px}
+.rcard .rbig{font-family:var(--serif);font-size:clamp(26px,7vw,38px);font-weight:600;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.rcard .rbig em{font-style:normal;font-size:18px;color:var(--mut)}
+.rcard .rsmall{font-size:13px;color:var(--mut);margin-top:9px}
+.rcard .rsmall b{color:var(--ink);font-weight:500}
+.note{font-size:12.5px;color:var(--faint);margin-top:4px;line-height:1.5}
+
+.finale{background:var(--bg2);border:1px solid var(--line2);border-radius:20px;padding:26px 22px;text-align:center;margin-top:22px}
+.finale .ftitle{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:6px}
+.finale .ftxt{color:var(--mut);font-size:14.5px;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto}
+
+footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 70px;text-align:center;font-size:13px;color:var(--faint)}
+footer a{color:var(--mut);text-decoration:none}
+footer a:hover{color:var(--accent2)}
+.disc{font-size:12px;color:var(--faint);max-width:560px;margin:0 auto 16px;line-height:1.5}
+
+@media(max-width:480px){.result{grid-template-columns:1fr}.panel{padding:20px 18px}}
+@media(prefers-reduced-motion:reduce){#reveal{display:none}*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg class="brandmark" viewBox="0 0 100 100" aria-label="Dubai Madeira"><g fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M34 20 L34 74"/><path d="M34 20 C64 20 64 74 34 74"/><path d="M18 88 Q28 82 38 88 Q48 94 58 88 Q68 82 78 88"/></g></svg>
+
+<div class="topctrl">
+  <div class="langwrap">
+    <button class="tbtn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Язык">RU</button>
+    <div class="langmenu" id="langMenu" role="menu">
+      <button data-l="ru" class="on" role="menuitem"><span class="lc">RU</span>Русский</button>
+      <button data-l="en" role="menuitem"><span class="lc">EN</span>English</button>
+      <button data-l="pt" role="menuitem"><span class="lc">PT</span>Português</button>
+      <button data-l="es" role="menuitem"><span class="lc">ES</span>Español</button>
+      <button data-l="de" role="menuitem"><span class="lc">DE</span>Deutsch</button>
+    </div>
+  </div>
+  <button class="tbtn icon" id="themeBtn" aria-label="Тема">☾</button>
+</div>
+
+<div id="reveal" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><g fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M34 20 L34 74"/><path d="M34 20 C64 20 64 74 34 74"/><path d="M18 88 Q28 82 38 88 Q48 94 58 88 Q68 82 78 88"/></g></svg>
+</div>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow" data-i="eyebrow">SeedWave · Недвижимость · Мадейра</div>
+    <h1>Dubai Madeira</h1>
+    <p class="subA" data-i="subA">Покупка объекта недвижимости в лучшей локации Фуншала — через жилищно-строительный кооператив.</p>
+    <p class="subB" data-i="subB">Кооператив — инструмент, который позволяет спокойно приобрести право на объект: законная структура, защита капитала, налоговые льготы и ликвидный актив с устойчивым спросом.</p>
+    <p class="proof" data-i="proof">Доказанный кейс рядом — SeedWave_09: 505 000 € → 750 000 €.</p>
+    <div class="btnrow">
+      <a class="cta" href="#calc" data-i="ctaDemo">Демо →</a>
+      <a class="linkmore" href="#calc" data-i="ctaMore">Подробнее</a>
+    </div>
+  </section>
+
+  <svg class="wave-div" viewBox="0 0 400 42" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28 Q50 10 100 28 T200 28 T300 28 T400 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+
+  <section class="calc" id="calc">
+    <div class="sec-eye" data-i="secEye">Демо · калькулятор участника</div>
+    <h2 data-i="calcH2">Посчитай свой доход</h2>
+    <p class="sub" data-i="calcSub">Прикинь, как растёт твой вход к сдаче дома — и сколько такой объект приносит от аренды. Ориентировочно, чтобы почувствовать масштаб.</p>
+
+    <div class="panel">
+      <div class="field-top">
+        <label for="entry" data-i="entryLabel">Сколько вхожу</label>
+        <div class="entry-val"><span id="entryOut">15 000</span> <span class="u">€</span></div>
+      </div>
+      <input type="range" id="entry" min="5000" max="150000" step="1000" value="15000" aria-label="Сумма входа">
+      <div class="range-ends"><span>5 000 €</span><span data-i="rangeRight">150 000 € (весь депозит)</span></div>
+      <div class="share" id="shareLine"></div>
+    </div>
+
+    <div class="panel">
+      <span class="seg-label" data-i="growthLabel">Сценарий роста к 2028</span>
+      <div class="seg" id="growthSeg" role="group">
+        <button data-g="0.30" data-i="gCons">Консервативно +30%</button>
+        <button data-g="0.48" class="on" data-i="gBase">План +48%</button>
+        <button data-g="0.58" data-i="gOpt">Оптимист +58%</button>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="rcard">
+        <div class="rlab" data-i="capLab">Твой капитал к 2028</div>
+        <div class="rbig"><span id="capOut">22 200</span> <em>€</em></div>
+        <div class="rsmall" id="gainLine"></div>
+      </div>
+      <div class="rcard">
+        <div class="rlab" data-i="yieldLab">Доходность входа</div>
+        <div class="rbig"><span id="yieldOut">48</span><em>%</em></div>
+        <div class="rsmall" id="yieldSmall"></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <span class="seg-label" data-i="rentLabel">Когда объект станет твоим — как сдавать</span>
+      <div class="seg" id="rentSeg" role="group">
+        <button data-r="long" class="on" data-i="rLong">Долгосрок</button>
+        <button data-r="short" data-i="rShort">Краткосрок · туристам</button>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="rcard">
+        <div class="rlab" data-i="rentLab">Аренда объекта</div>
+        <div class="rbig"><span id="rentMo">1 800</span> <em data-i="perMo">€/мес</em></div>
+        <div class="rsmall" id="rentYrLine"></div>
+      </div>
+      <div class="rcard">
+        <div class="rlab" data-i="totalLab">Аренда + рост капитала</div>
+        <div class="rbig"><span id="totalY">~6%</span></div>
+        <div class="rsmall" data-i="totalSmall">суммарная отдача в год, ориентировочно</div>
+      </div>
+    </div>
+    <p class="note" id="rentNote"></p>
+
+    <div class="finale">
+      <div class="ftitle" data-i="finTitle">Условия входа — обсудим лично</div>
+      <div class="ftxt" data-i="finTxt">Покажу кейс SeedWave_09 и условия входа в новую очередь. Без обязательств.</div>
+      <a class="cta" href="https://t.me/Igor_Kartuzov" target="_blank" rel="noopener" data-i="finCta">Связаться →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="disc" data-i="disc">Расчёты носят ориентировочный характер и не являются публичной офертой. Точные условия определяются уставом кооператива и согласуются индивидуально. Краткосрочная аренда (AL) требует лицензии и несёт расходы на управление и простои.</p>
+    © <a href="https://t.me/Igor_Kartuzov" id="lnkName" target="_blank" rel="noopener">Igor Kartuzov</a> · <a href="https://t.me/Igor_Kartuzov" id="lnkHub" target="_blank" rel="noopener">SeedWave</a>
+  </footer>
+
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const LOC={ru:'ru-RU',en:'en-US',pt:'pt-PT',es:'es-ES',de:'de-DE'};
+const fmt=(n,l)=>Math.round(n).toLocaleString(LOC[l]||'en-US');
+
+const OBJECT_NOW=750000, TARGET=150000;
+const T={
+ ru:{eyebrow:"SeedWave · Недвижимость · Мадейра",
+  subA:"Покупка объекта недвижимости в лучшей локации Фуншала — через жилищно-строительный кооператив.",
+  subB:"Кооператив — инструмент, который позволяет спокойно приобрести право на объект: законная структура, защита капитала, налоговые льготы и ликвидный актив с устойчивым спросом.",
+  proof:"Доказанный кейс рядом — SeedWave_09: 505 000 € → 750 000 €.",
+  ctaDemo:"Демо →",ctaMore:"Подробнее",secEye:"Демо · калькулятор участника",calcH2:"Посчитай свой доход",
+  calcSub:"Прикинь, как растёт твой вход к сдаче дома — и сколько такой объект приносит от аренды. Ориентировочно, чтобы почувствовать масштаб.",
+  entryLabel:"Сколько вхожу",rangeRight:"150 000 € (весь депозит)",
+  growthLabel:"Сценарий роста к 2028",gCons:"Консервативно +30%",gBase:"План +48%",gOpt:"Оптимист +58%",
+  capLab:"Твой капитал к 2028",yieldLab:"Доходность входа",rentLabel:"Когда объект станет твоим — как сдавать",
+  rLong:"Долгосрок",rShort:"Краткосрок · туристам",rentLab:"Аренда объекта",perMo:"€/мес",
+  totalLab:"Аренда + рост капитала",totalSmall:"суммарная отдача в год, ориентировочно",
+  finTitle:"Условия входа — обсудим лично",finTxt:"Покажу кейс SeedWave_09 и условия входа в новую очередь. Без обязательств.",finCta:"Связаться →",
+  disc:"Расчёты носят ориентировочный характер и не являются публичной офертой. Точные условия определяются уставом кооператива и согласуются индивидуально. Краткосрочная аренда (AL) требует лицензии и несёт расходы на управление и простои.",
+  share:(s)=>`Твоя доля в депозите проекта — <b>${s}%</b>. Голос на собрании — пропорционально доле.`,
+  gain:(g)=>`прирост <b>+${g} €</b> к твоему входу`,yieldSmall:"за период до сдачи (<b>~3 года</b>)",
+  rentYr:(y)=>`<b>${y} €</b> в год`,
+  noteLong:"Долгосрок: чистыми, коммуналку платит арендатор. T2 на Эштрада Монументал реально сдаётся за 1 500–2 200 €/мес.",
+  noteShort:"Краткосрок: валовый сбор до расходов на управление и простои. Требует лицензии AL. Туристический спрос на Эштрада Монументал высокий."},
+ en:{eyebrow:"SeedWave · Real estate · Madeira",
+  subA:"Buying a real-estate asset in the best location in Funchal — through a housing & construction cooperative.",
+  subB:"The cooperative is the instrument that lets you acquire the right to the asset with confidence: a lawful structure, capital protection, tax benefits and a liquid asset in steady demand.",
+  proof:"A proven case next door — SeedWave_09: €505,000 → €750,000.",
+  ctaDemo:"Demo →",ctaMore:"Learn more",secEye:"Demo · member calculator",calcH2:"Calculate your return",
+  calcSub:"See how your contribution grows by completion — and what such an asset earns from rent. Indicative, to get a sense of scale.",
+  entryLabel:"My contribution",rangeRight:"€150,000 (full deposit)",
+  growthLabel:"Growth scenario to 2028",gCons:"Conservative +30%",gBase:"Base +48%",gOpt:"Optimistic +58%",
+  capLab:"Your capital by 2028",yieldLab:"Return on contribution",rentLabel:"Once the asset is yours — how to rent it",
+  rLong:"Long-term",rShort:"Short-term · tourists",rentLab:"Rental income",perMo:"€/mo",
+  totalLab:"Rent + capital growth",totalSmall:"combined annual return, indicative",
+  finTitle:"Let's discuss the terms",finTxt:"I'll walk you through SeedWave_09 and the terms for the new phase. No commitment.",finCta:"Get in touch →",
+  disc:"Figures are indicative and not a public offer. Exact terms are set by the cooperative's statutes and agreed individually. Short-term rental (AL) requires a licence and carries management costs and vacancy.",
+  share:(s)=>`Your share of the project deposit — <b>${s}%</b>. Voting at the assembly is proportional to the share.`,
+  gain:(g)=>`gain <b>+€${g}</b> on your contribution`,yieldSmall:"over the period to completion (<b>~3 years</b>)",
+  rentYr:(y)=>`<b>€${y}</b> per year`,
+  noteLong:"Long-term: net, tenant pays utilities. A T2 on Estrada Monumental rents for €1,500–2,200/month.",
+  noteShort:"Short-term: gross before management costs and vacancy. Requires an AL licence. Tourist demand on Estrada Monumental is high."},
+ pt:{eyebrow:"SeedWave · Imobiliário · Madeira",
+  subA:"Compra de um imóvel na melhor localização do Funchal — através de uma cooperativa de habitação e construção.",
+  subB:"A cooperativa é o instrumento que permite adquirir o direito ao imóvel com segurança: estrutura legal, proteção do capital, benefícios fiscais e um ativo líquido com procura estável.",
+  proof:"Um caso comprovado ao lado — SeedWave_09: 505 000 € → 750 000 €.",
+  ctaDemo:"Demo →",ctaMore:"Saber mais",secEye:"Demo · calculadora do membro",calcH2:"Calcule o seu rendimento",
+  calcSub:"Veja como a sua entrada cresce até à conclusão — e quanto um imóvel destes rende com arrendamento. Indicativo, para ter a noção da escala.",
+  entryLabel:"A minha entrada",rangeRight:"150 000 € (depósito total)",
+  growthLabel:"Cenário de crescimento até 2028",gCons:"Conservador +30%",gBase:"Base +48%",gOpt:"Otimista +58%",
+  capLab:"O seu capital até 2028",yieldLab:"Rentabilidade da entrada",rentLabel:"Quando o imóvel for seu — como arrendar",
+  rLong:"Longa duração",rShort:"Curta duração · turistas",rentLab:"Rendimento de arrendamento",perMo:"€/mês",
+  totalLab:"Arrendamento + valorização",totalSmall:"retorno anual combinado, indicativo",
+  finTitle:"Vamos falar das condições",finTxt:"Mostro o caso SeedWave_09 e as condições da nova fase. Sem compromisso.",finCta:"Contactar →",
+  disc:"Os valores são indicativos e não constituem oferta pública. As condições exatas são definidas pelos estatutos da cooperativa e acordadas individualmente. O arrendamento de curta duração (AL) exige licença e implica custos de gestão e vacância.",
+  share:(s)=>`A sua quota no depósito do projeto — <b>${s}%</b>. O voto na assembleia é proporcional à quota.`,
+  gain:(g)=>`ganho <b>+${g} €</b> sobre a sua entrada`,yieldSmall:"no período até à conclusão (<b>~3 anos</b>)",
+  rentYr:(y)=>`<b>${y} €</b> por ano`,
+  noteLong:"Longa duração: líquido, inquilino paga despesas. Um T2 na Estrada Monumental arrenda por 1 500–2 200 €/mês.",
+  noteShort:"Curta duração: bruto antes de custos de gestão e vacância. Requer licença AL. A procura turística na Estrada Monumental é elevada."},
+ es:{eyebrow:"SeedWave · Inmobiliario · Madeira",
+  subA:"Compra de un inmueble en la mejor ubicación de Funchal — a través de una cooperativa de vivienda y construcción.",
+  subB:"La cooperativa es el instrumento que permite adquirir el derecho al inmueble con tranquilidad: estructura legal, protección del capital, beneficios fiscales y un activo líquido con demanda estable.",
+  proof:"Un caso probado al lado — SeedWave_09: 505 000 € → 750 000 €.",
+  ctaDemo:"Demo →",ctaMore:"Saber más",secEye:"Demo · calculadora del miembro",calcH2:"Calcula tu rendimiento",
+  calcSub:"Mira cómo crece tu aportación hasta la entrega — y cuánto renta un inmueble así en alquiler. Indicativo, para hacerte una idea.",
+  entryLabel:"Mi aportación",rangeRight:"150 000 € (depósito completo)",
+  growthLabel:"Escenario de crecimiento hasta 2028",gCons:"Conservador +30%",gBase:"Base +48%",gOpt:"Optimista +58%",
+  capLab:"Tu capital en 2028",yieldLab:"Rentabilidad de la aportación",rentLabel:"Cuando el inmueble sea tuyo — cómo alquilar",
+  rLong:"Larga duración",rShort:"Corta duración · turistas",rentLab:"Ingreso por alquiler",perMo:"€/mes",
+  totalLab:"Alquiler + revalorización",totalSmall:"retorno anual combinado, indicativo",
+  finTitle:"Hablemos de las condiciones",finTxt:"Te muestro el caso SeedWave_09 y las condiciones de la nueva fase. Sin compromiso.",finCta:"Contactar →",
+  disc:"Las cifras son indicativas y no constituyen oferta pública. Las condiciones exactas se definen en los estatutos de la cooperativa y se acuerdan individualmente. El alquiler de corta duración (AL) requiere licencia e implica costes de gestión y vacancia.",
+  share:(s)=>`Tu cuota en el depósito del proyecto — <b>${s}%</b>. El voto en la asamblea es proporcional a la cuota.`,
+  gain:(g)=>`ganancia <b>+${g} €</b> sobre tu aportación`,yieldSmall:"durante el periodo hasta la entrega (<b>~3 años</b>)",
+  rentYr:(y)=>`<b>${y} €</b> al año`,
+  noteLong:"Larga duración: neto, el inquilino paga los suministros. Un T2 en Estrada Monumental se alquila por 1 500–2 200 €/mes.",
+  noteShort:"Corta duración: bruto antes de costes de gestión y vacancia. Requiere licencia AL. La demanda turística en Estrada Monumental es alta."},
+ de:{eyebrow:"SeedWave · Immobilien · Madeira",
+  subA:"Kauf einer Immobilie in der besten Lage Funchals — über eine Wohn- und Baugenossenschaft.",
+  subB:"Die Genossenschaft ist das Instrument, mit dem Sie das Recht an der Immobilie sicher erwerben: rechtliche Struktur, Kapitalschutz, Steuervorteile und ein liquider Vermögenswert mit stabiler Nachfrage.",
+  proof:"Ein bewährter Fall nebenan — SeedWave_09: 505.000 € → 750.000 €.",
+  ctaDemo:"Demo →",ctaMore:"Mehr erfahren",secEye:"Demo · Mitglieder-Rechner",calcH2:"Berechne deine Rendite",
+  calcSub:"Sieh, wie dein Beitrag bis zur Fertigstellung wächst — und was eine solche Immobilie an Miete bringt. Richtwert, für ein Gefühl der Größenordnung.",
+  entryLabel:"Mein Beitrag",rangeRight:"150.000 € (volle Anzahlung)",
+  growthLabel:"Wachstumsszenario bis 2028",gCons:"Konservativ +30%",gBase:"Basis +48%",gOpt:"Optimistisch +58%",
+  capLab:"Dein Kapital bis 2028",yieldLab:"Rendite des Beitrags",rentLabel:"Wenn die Immobilie dir gehört — wie vermieten",
+  rLong:"Langfristig",rShort:"Kurzfristig · Touristen",rentLab:"Mieteinnahmen",perMo:"€/Mon.",
+  totalLab:"Miete + Wertzuwachs",totalSmall:"kombinierte Jahresrendite, Richtwert",
+  finTitle:"Lass uns über die Konditionen sprechen",finTxt:"Ich zeige dir den Fall SeedWave_09 und die Konditionen der neuen Phase. Unverbindlich.",finCta:"Kontakt →",
+  disc:"Die Zahlen sind Richtwerte und kein öffentliches Angebot. Die genauen Bedingungen werden durch die Satzung der Genossenschaft festgelegt und individuell vereinbart. Kurzzeitvermietung (AL) erfordert eine Lizenz und bringt Verwaltungskosten und Leerstand mit sich.",
+  share:(s)=>`Dein Anteil an der Projekt-Anzahlung — <b>${s}%</b>. Die Stimme in der Versammlung ist proportional zum Anteil.`,
+  gain:(g)=>`Zuwachs <b>+${g} €</b> auf deinen Beitrag`,yieldSmall:"über den Zeitraum bis zur Fertigstellung (<b>~3 Jahre</b>)",
+  rentYr:(y)=>`<b>${y} €</b> pro Jahr`,
+  noteLong:"Langfristig: netto, Nebenkosten zahlt der Mieter. Ein T2 an der Estrada Monumental wird für 1.500–2.200 €/Monat vermietet.",
+  noteShort:"Kurzfristig: brutto vor Verwaltungskosten und Leerstand. Erfordert eine AL-Lizenz. Die touristische Nachfrage an der Estrada Monumental ist hoch."}
+};
+const RENT={long:1800,short:2800};
+let entry=15000, growth=0.48, rmode='long', lang='ru';
+
+function animate(el,to,f){const from=parseFloat(el.dataset.v||'0');el.dataset.v=to;
+  const t0=performance.now();function s(t){let p=Math.min(1,(t-t0)/420);p=1-Math.pow(1-p,3);
+  el.textContent=f(from+(to-from)*p);if(p<1)requestAnimationFrame(s)}requestAnimationFrame(s)}
+
+function render(){
+  const d=T[lang];
+  const cap=entry*(1+growth), gain=cap-entry, share=Math.min(100,entry/TARGET*100);
+  const rentMo=RENT[rmode], rentYr=rentMo*12, totalY=rentYr/OBJECT_NOW*100+growth/3*100;
+  $('entryOut').textContent=fmt(entry,lang);
+  $('shareLine').innerHTML=d.share(Math.round(share));
+  animate($('capOut'),cap,v=>fmt(v,lang));
+  $('gainLine').innerHTML=d.gain(fmt(gain,lang));
+  animate($('yieldOut'),growth*100,v=>Math.round(v));
+  $('yieldSmall').innerHTML=d.yieldSmall;
+  animate($('rentMo'),rentMo,v=>fmt(v,lang));
+  $('rentYrLine').innerHTML=d.rentYr(fmt(rentYr,lang));
+  $('totalY').textContent='~'+totalY.toFixed(1).replace('.',lang==='en'?'.':',')+'%';
+  $('rentNote').textContent=rmode==='long'?d.noteLong:d.noteShort;
+}
+
+function applyLang(l){
+  lang=l;const d=T[l];document.documentElement.lang=l;
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.dataset.i;if(d[k]!=null)el.textContent=d[k]});
+  $('langBtn').textContent=l.toUpperCase();
+  [...$('langMenu').children].forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  try{localStorage.setItem('dm_lang',l)}catch(e){}
+  try{const u=new URL(location);u.searchParams.set('lang',l);history.replaceState(null,'',u)}catch(e){}
+  render();
+}
+
+$('entry').addEventListener('input',e=>{entry=+e.target.value;render()});
+$('growthSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...e.currentTarget.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');growth=+b.dataset.g;render()});
+$('rentSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...e.currentTarget.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');rmode=b.dataset.r;render()});
+
+const lb=$('langBtn'),lm=$('langMenu');
+lb.addEventListener('click',e=>{e.stopPropagation();const o=lm.classList.toggle('open');lb.setAttribute('aria-expanded',o)});
+lm.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;applyLang(b.dataset.l);lm.classList.remove('open');lb.setAttribute('aria-expanded','false')});
+document.addEventListener('click',()=>{lm.classList.remove('open');lb.setAttribute('aria-expanded','false')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){lm.classList.remove('open');lb.setAttribute('aria-expanded','false')}});
+
+const tb=$('themeBtn');
+function setTheme(t){document.documentElement.dataset.theme=t;tb.textContent=t==='night'?'☾':'☀';try{localStorage.setItem('dm_theme',t)}catch(e){}}
+tb.addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='night'?'day':'night'));
+try{const s=localStorage.getItem('dm_theme');if(s)setTheme(s)}catch(e){}
+
+let L0='ru';try{const p=new URL(location).searchParams.get('lang');const st=localStorage.getItem('dm_lang');const nv=(navigator.language||'').slice(0,2).toLowerCase();if(p&&T[p])L0=p;else if(st&&T[st])L0=st;else if(T[nv])L0=nv}catch(e){}
+applyLang(L0);
+
+const rev=$('reveal');
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){rev.style.display='none'}
+else{setTimeout(()=>rev.classList.add('gone'),2400);setTimeout(()=>rev.style.display='none',3000)}
+</script>
+</body>
+</html>
