@@ -227,7 +227,7 @@ footer a:hover{color:var(--accent2)}
 
   <footer>
     <p class="disc" data-i="disc">Расчёты носят ориентировочный характер и не являются публичной офертой. Точные условия определяются уставом кооператива и согласуются индивидуально. Краткосрочная аренда (AL) требует лицензии и несёт расходы на управление и простои.</p>
-    © <a href="https://t.me/Igor_Kartuzov" id="lnkName" target="_blank" rel="noopener">Igor Kartuzov</a> · <a href="https://t.me/Igor_Kartuzov" id="lnkHub" target="_blank" rel="noopener">SeedWave</a>
+    © <a href="https://www.linkedin.com/in/igor-kartuzov" id="lnkName" target="_blank" rel="noopener">Igor Kartuzov</a> · <a href="https://ikartuzov-hub.github.io/seedwave-catalog/hub/" id="lnkHub" target="_blank" rel="noopener">SeedWave</a>
   </footer>
 
 </main>
@@ -357,6 +357,7 @@ function applyLang(l){
   lang=l;const d=T[l];document.documentElement.lang=l;
   document.querySelectorAll('[data-i]').forEach(el=>{const k=el.dataset.i;if(d[k]!=null)el.textContent=d[k]});
   $('langBtn').textContent=l.toUpperCase();
+  var lh=$('lnkHub');if(lh)lh.href='https://ikartuzov-hub.github.io/seedwave-catalog/hub/?lang='+l;
   [...$('langMenu').children].forEach(b=>b.classList.toggle('on',b.dataset.l===l));
   try{localStorage.setItem('dm_lang',l)}catch(e){}
   try{const u=new URL(location);u.searchParams.set('lang',l);history.replaceState(null,'',u)}catch(e){}
