@@ -1,0 +1,14 @@
+{
+  "name": "Dubai Madeira",
+  "short_name": "Dubai",
+  "description": "Покупка недвижимости в Фуншале через жилищно-строительный кооператив.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0C1A24",
+  "theme_color": "#1B6F95",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
