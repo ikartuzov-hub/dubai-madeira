@@ -6,7 +6,15 @@
 <title>Dubai Madeira</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg?v=1">
 <link rel="manifest" href="app.webmanifest">
-<link rel="apple-touch-icon" href="icon.svg?v=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Dubai Madeira">
+<meta name="theme-color" content="#0C1A24">
+<meta property="og:title" content="Dubai Madeira — свои апартаменты в Фуншале">
+<meta property="og:description" content="Покупка недвижимости в лучшей локации Фуншала через жилищно-строительный кооператив. Вход от €5 000. Кейс SeedWave_09: €505 000 → €750 000.">
+<meta property="og:image" content="https://ikartuzov-hub.github.io/dubai-madeira/og-image.png">
+<meta property="og:url" content="https://ikartuzov-hub.github.io/dubai-madeira/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -70,6 +78,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1
   cursor:pointer;text-decoration:none;transition:.2s}
 .cta:hover{background:var(--accent2);transform:translateY(-1px)}
 .cta:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+.cta2{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink);
+  font-family:var(--sans);font-weight:600;font-size:15px;padding:14px 26px;border:1px solid var(--line2);
+  border-radius:13px;cursor:pointer;text-decoration:none;transition:.2s}
+.cta2:hover{border-color:var(--accent2);color:var(--accent2)}
+.ctarow{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:6px}
 .linkmore{color:var(--mut);font-size:15px;text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:2px}
 .linkmore:hover{color:var(--ink)}
 
@@ -222,7 +235,10 @@ footer a:hover{color:var(--accent2)}
     <div class="finale">
       <div class="ftitle" data-i="finTitle">Условия входа — обсудим лично</div>
       <div class="ftxt" data-i="finTxt">Покажу кейс SeedWave_09 и условия входа в новую очередь. Без обязательств.</div>
-      <a class="cta" href="https://t.me/Igor_Kartuzov" target="_blank" rel="noopener" data-i="finCta">Связаться →</a>
+      <div class="ctarow">
+        <a class="cta" id="finCtaBot" href="https://t.me/SeedWaveBot?start=dm_ru" target="_blank" rel="noopener" data-i="finCta">Связаться →</a>
+        <a class="cta2" href="https://t.me/Igor_Kartuzov" target="_blank" rel="noopener" data-i="finCta2">Написать лично</a>
+      </div>
     </div>
   </section>
 
@@ -251,7 +267,7 @@ const T={
   capLab:"Твой капитал к 2028",yieldLab:"Доходность входа",rentLabel:"Когда объект станет твоим — как сдавать",
   rLong:"Долгосрок",rShort:"Краткосрок · туристам",rentLab:"Аренда объекта",perMo:"€/мес",
   totalLab:"Аренда + рост капитала",totalSmall:"суммарная отдача в год, ориентировочно",
-  finTitle:"Условия входа — обсудим лично",finTxt:"Покажу кейс SeedWave_09 и условия входа в новую очередь. Без обязательств.",finCta:"Связаться →",
+  finTitle:"Условия входа — обсудим лично",finTxt:"Покажу кейс SeedWave_09 и условия входа в новую очередь. Без обязательств.",finCta:"Связаться →",finCta2:"Написать лично",
   disc:"Расчёты носят ориентировочный характер и не являются публичной офертой. Точные условия определяются уставом кооператива и согласуются индивидуально. Краткосрочная аренда (AL) требует лицензии и несёт расходы на управление и простои.",
   share:(s)=>`Твоя доля в депозите проекта — <b>${s}%</b>. Голос на собрании — пропорционально доле.`,
   gain:(g)=>`прирост <b>+${g} €</b> к твоему входу`,yieldSmall:"за период до сдачи (<b>~3 года</b>)",
@@ -259,8 +275,8 @@ const T={
   noteLong:"Долгосрок: чистыми, коммуналку платит арендатор. T2 на Эштрада Монументал реально сдаётся за 1 500–2 200 €/мес.",
   noteShort:"Краткосрок: валовый сбор до расходов на управление и простои. Требует лицензии AL. Туристический спрос на Эштрада Монументал высокий."},
  en:{eyebrow:"SeedWave · Real estate · Madeira",
-  subA:"Buying a real-estate asset in the best location in Funchal — through a housing & construction cooperative.",
-  subB:"The cooperative is the instrument that lets you acquire the right to the asset with confidence: a lawful structure, capital protection, tax benefits and a liquid asset in steady demand.",
+  subA:"Your own apartment in the best location in Funchal — through a housing & construction cooperative. Entry from €5,000.",
+  subB:"The cooperative is the instrument that lets you acquire the right to the apartment with confidence: a lawful structure, capital protection, tax benefits and a liquid asset in steady demand. You start with a share, not with the full price of the flat.",
   proof:"A proven case next door — SeedWave_09: €505,000 → €750,000.",
   ctaDemo:"Demo →",ctaMore:"Learn more",secEye:"Demo · member calculator",calcH2:"Calculate your return",
   calcSub:"See how your contribution grows by completion — and what such an asset earns from rent. Indicative, to get a sense of scale.",
@@ -269,7 +285,7 @@ const T={
   capLab:"Your capital by 2028",yieldLab:"Return on contribution",rentLabel:"Once the asset is yours — how to rent it",
   rLong:"Long-term",rShort:"Short-term · tourists",rentLab:"Rental income",perMo:"€/mo",
   totalLab:"Rent + capital growth",totalSmall:"combined annual return, indicative",
-  finTitle:"Let's discuss the terms",finTxt:"I'll walk you through SeedWave_09 and the terms for the new phase. No commitment.",finCta:"Get in touch →",
+  finTitle:"Let's discuss the terms",finTxt:"I'll walk you through SeedWave_09 and the terms for the new phase. No commitment.",finCta:"Get in touch →",finCta2:"Message me directly",
   disc:"Figures are indicative and not a public offer. Exact terms are set by the cooperative's statutes and agreed individually. Short-term rental (AL) requires a licence and carries management costs and vacancy.",
   share:(s)=>`Your share of the project deposit — <b>${s}%</b>. Voting at the assembly is proportional to the share.`,
   gain:(g)=>`gain <b>+€${g}</b> on your contribution`,yieldSmall:"over the period to completion (<b>~3 years</b>)",
@@ -287,7 +303,7 @@ const T={
   capLab:"O seu capital até 2028",yieldLab:"Rentabilidade da entrada",rentLabel:"Quando o imóvel for seu — como arrendar",
   rLong:"Longa duração",rShort:"Curta duração · turistas",rentLab:"Rendimento de arrendamento",perMo:"€/mês",
   totalLab:"Arrendamento + valorização",totalSmall:"retorno anual combinado, indicativo",
-  finTitle:"Vamos falar das condições",finTxt:"Mostro o caso SeedWave_09 e as condições da nova fase. Sem compromisso.",finCta:"Contactar →",
+  finTitle:"Vamos falar das condições",finTxt:"Mostro o caso SeedWave_09 e as condições da nova fase. Sem compromisso.",finCta:"Contactar →",finCta2:"Falar comigo diretamente",
   disc:"Os valores são indicativos e não constituem oferta pública. As condições exatas são definidas pelos estatutos da cooperativa e acordadas individualmente. O arrendamento de curta duração (AL) exige licença e implica custos de gestão e vacância.",
   share:(s)=>`A sua quota no depósito do projeto — <b>${s}%</b>. O voto na assembleia é proporcional à quota.`,
   gain:(g)=>`ganho <b>+${g} €</b> sobre a sua entrada`,yieldSmall:"no período até à conclusão (<b>~3 anos</b>)",
@@ -305,7 +321,7 @@ const T={
   capLab:"Tu capital en 2028",yieldLab:"Rentabilidad de la aportación",rentLabel:"Cuando el inmueble sea tuyo — cómo alquilar",
   rLong:"Larga duración",rShort:"Corta duración · turistas",rentLab:"Ingreso por alquiler",perMo:"€/mes",
   totalLab:"Alquiler + revalorización",totalSmall:"retorno anual combinado, indicativo",
-  finTitle:"Hablemos de las condiciones",finTxt:"Te muestro el caso SeedWave_09 y las condiciones de la nueva fase. Sin compromiso.",finCta:"Contactar →",
+  finTitle:"Hablemos de las condiciones",finTxt:"Te muestro el caso SeedWave_09 y las condiciones de la nueva fase. Sin compromiso.",finCta:"Contactar →",finCta2:"Escribirme directamente",
   disc:"Las cifras son indicativas y no constituyen oferta pública. Las condiciones exactas se definen en los estatutos de la cooperativa y se acuerdan individualmente. El alquiler de corta duración (AL) requiere licencia e implica costes de gestión y vacancia.",
   share:(s)=>`Tu cuota en el depósito del proyecto — <b>${s}%</b>. El voto en la asamblea es proporcional a la cuota.`,
   gain:(g)=>`ganancia <b>+${g} €</b> sobre tu aportación`,yieldSmall:"durante el periodo hasta la entrega (<b>~3 años</b>)",
@@ -323,7 +339,7 @@ const T={
   capLab:"Dein Kapital bis 2028",yieldLab:"Rendite des Beitrags",rentLabel:"Wenn die Immobilie dir gehört — wie vermieten",
   rLong:"Langfristig",rShort:"Kurzfristig · Touristen",rentLab:"Mieteinnahmen",perMo:"€/Mon.",
   totalLab:"Miete + Wertzuwachs",totalSmall:"kombinierte Jahresrendite, Richtwert",
-  finTitle:"Lass uns über die Konditionen sprechen",finTxt:"Ich zeige dir den Fall SeedWave_09 und die Konditionen der neuen Phase. Unverbindlich.",finCta:"Kontakt →",
+  finTitle:"Lass uns über die Konditionen sprechen",finTxt:"Ich zeige dir den Fall SeedWave_09 und die Konditionen der neuen Phase. Unverbindlich.",finCta:"Kontakt →",finCta2:"Mir direkt schreiben",
   disc:"Die Zahlen sind Richtwerte und kein öffentliches Angebot. Die genauen Bedingungen werden durch die Satzung der Genossenschaft festgelegt und individuell vereinbart. Kurzzeitvermietung (AL) erfordert eine Lizenz und bringt Verwaltungskosten und Leerstand mit sich.",
   share:(s)=>`Dein Anteil an der Projekt-Anzahlung — <b>${s}%</b>. Die Stimme in der Versammlung ist proportional zum Anteil.`,
   gain:(g)=>`Zuwachs <b>+${g} €</b> auf deinen Beitrag`,yieldSmall:"über den Zeitraum bis zur Fertigstellung (<b>~3 Jahre</b>)",
@@ -359,6 +375,12 @@ function applyLang(l){
   document.querySelectorAll('[data-i]').forEach(el=>{const k=el.dataset.i;if(d[k]!=null)el.textContent=d[k]});
   $('langBtn').textContent=l.toUpperCase();
   var lh=$('lnkHub');if(lh)lh.href='https://ikartuzov-hub.github.io/seedwave-catalog/hub/?lang='+l;
+  /* deep-link бота: язык + метка источника (?src=ntm с троп → dm_{lang}_ntm) */
+  var cb=$('finCtaBot');
+  if(cb){
+    var src=null; try{src=new URLSearchParams(location.search).get('src')}catch(e){}
+    cb.href='https://t.me/SeedWaveBot?start=dm_'+l+(src?'_'+src.replace(/[^a-z0-9]/gi,'').slice(0,12):'');
+  }
   [...$('langMenu').children].forEach(b=>b.classList.toggle('on',b.dataset.l===l));
   try{localStorage.setItem('dm_lang',l)}catch(e){}
   try{const u=new URL(location);u.searchParams.set('lang',l);history.replaceState(null,'',u)}catch(e){}
