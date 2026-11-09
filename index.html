@@ -245,7 +245,7 @@ footer a:hover{color:var(--accent2)}
 
   <footer>
     <p class="disc" data-i="disc">Расчёты носят ориентировочный характер и не являются публичной офертой. Точные условия определяются уставом кооператива и согласуются индивидуально. Краткосрочная аренда (AL) требует лицензии и несёт расходы на управление и простои.</p>
-    © <a href="https://www.linkedin.com/in/igor-kartuzov" id="lnkName" target="_blank" rel="noopener">Igor Kartuzov</a> · <a href="https://seedwave.pt/hub/" id="lnkHub" target="_blank" rel="noopener">SeedWave</a>
+    © <a href="https://seedwave.pt/hub/" id="lnkHub" target="_blank" rel="noopener">SeedWave</a> · <a data-mad href="https://seedwave.pt/madeira/?lang=ru&amp;utm_source=dubai&amp;utm_medium=footer">Madeira</a> · <a href="https://www.linkedin.com/in/igor-kartuzov" id="lnkName" target="_blank" rel="noopener">Igor Kartuzov</a>
   </footer>
 
 </main>
@@ -412,5 +412,6 @@ const rev=$('reveal');
 if(matchMedia('(prefers-reduced-motion:reduce)').matches){rev.style.display='none'}
 else{setTimeout(()=>rev.classList.add('gone'),2400);setTimeout(()=>rev.style.display='none',3000)}
 </script>
+<script>/* Madeira в подвале: язык читателя */(function(){function u(){var L=(document.documentElement.lang||"").slice(0,2)||((location.search.match(/[?&]lang=([a-z]{2})/)||[])[1])||"pt";document.querySelectorAll("a[data-mad]").forEach(function(a){a.href=a.href.replace(/lang=[a-z]{2}/,"lang="+L)})}u();if(window.MutationObserver)new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]})})()</script>
 </body>
 </html>
